@@ -68,4 +68,4 @@ npm test
 
 The automated tests use simulated receivers. Use the Big Buck Bunny sample to check discovery and playback on real hardware.
 
-Phosphor icon attribution is included in [public/phosphor-LICENSE.txt](public/phosphor-LICENSE.txt).
+
