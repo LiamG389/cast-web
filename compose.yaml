@@ -1,0 +1,34 @@
+name: cast-web
+services:
+  cast-web:
+    build: .
+    image: cast-web:local
+    network_mode: host
+    init: true
+    restart: unless-stopped
+    environment:
+      PORT: "3080"
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+      CAST_MEDIA_DIR: /media/remux
+    volumes:
+      - type: bind
+        source: "${CAST_REMUX_DIR:-./remux}"
+        target: /media/remux
+        bind:
+          create_host_path: false
+    mem_limit: 2g
+    cpus: 2.0
+    pids_limit: 512
+    shm_size: 256mb
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+process.env.PORT+'/api/devices').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+

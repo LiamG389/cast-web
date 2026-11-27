@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Cast">
+<title>Cast</title>
+<link rel="icon" href="/favicon.ico?v=phosphor" sizes="32x32"><link rel="icon" href="/icon.svg?v=phosphor" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=phosphor" sizes="180x180"><link rel="manifest" href="/manifest.webmanifest?v=phosphor">
+<script>
+(()=>{let theme;try{theme=localStorage.getItem('cast-theme');}catch{}document.documentElement.dataset.theme=theme==='dark'||theme==='light'?theme:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');})();
+</script>
+
+<style>
+:root{color-scheme:light;--page:#f2f2f7;--surface:#fff;--text:#1c1c1e;--secondary:#636366;--muted:#8e8e93;--border:#d1d1d6;--separator:#e5e5ea;--soft:#f0f0f3;--selected:#eef5ff;--hover:#e9e9ee;--accent:#0068d9;--primary:#0068d9;--error:#c72525}
+:root[data-theme="dark"]{color-scheme:dark;--page:#101012;--surface:#1c1c1e;--text:#f2f2f7;--secondary:#b0b0b8;--muted:#9898a0;--border:#454549;--separator:#353538;--soft:#2c2c2e;--selected:#192c43;--hover:#343437;--accent:#75b6ff;--primary:#0068d9;--error:#ff8a85}
+
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--page);font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}svg{width:22px;height:22px;fill:currentColor;stroke:none;flex-shrink:0}.sprite{position:absolute;width:0;height:0;overflow:hidden}.app{height:100vh;height:100dvh;width:100%;margin:0;display:flex;flex-direction:column;background:var(--page);overflow:hidden;padding-top:env(safe-area-inset-top)}header{height:76px;flex-shrink:0;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border-bottom:1px solid var(--border)}.brand{display:flex;gap:9px;align-items:center;font-size:23px;font-weight:700;letter-spacing:-.5px}.brand svg{color:var(--text)}.device-pill{border:0;background:var(--soft);color:var(--accent);border-radius:8px;display:flex;align-items:center;gap:7px;padding:10px 12px;max-width:64%;font-size:14px;font-weight:500;min-height:42px}.device-pill span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.device-pill svg{width:17px;height:17px}.search-area{padding:20px 20px 4px;flex-shrink:0}.search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:4px 4px 4px 12px}.search>svg{color:var(--muted);width:18px;height:18px}.search input{width:0;flex:1;min-width:0;background:none;border:0;color:var(--text);padding:10px 0;font-size:16px;outline:none}.search input::placeholder{color:var(--muted)}.search:focus-within{border-color:var(--accent)}.search button{border:0;border-radius:5px;background:var(--primary);color:white;width:42px;height:42px;display:grid;place-items:center}.search button svg{width:20px}.scan-line{display:flex;align-items:center;gap:8px;min-height:36px;color:var(--secondary);font-size:13px}.scan-line.busy:before{content:"";width:11px;height:11px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.library{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 20px}.section-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}.section-heading h1{margin:0;font-size:14px;font-weight:600;color:var(--secondary)}.count{font-size:13px;color:var(--muted);margin-left:7px}.icon-button{border:0;background:none;color:var(--accent);min-width:44px;min-height:44px;display:grid;place-items:center;border-radius:6px}.icon-button:hover{background:var(--hover)}.tracks{overflow-y:auto;overscroll-behavior:contain;min-height:0;padding-bottom:16px;scrollbar-width:thin}.track{display:flex;align-items:center;background:var(--surface);border-bottom:1px solid var(--separator);min-height:82px;padding-right:12px}.track:first-child{border-radius:10px 10px 0 0}.track:last-child{border-radius:0 0 10px 10px;border-bottom:0}.track:only-child{border-radius:10px}.track.selected{background:var(--selected)}.select-track{display:flex;align-items:center;text-align:left;gap:12px;flex:1;min-width:0;padding:16px 12px;border:0;background:none;color:var(--text);min-height:82px}.track-copy{flex:1;min-width:0}.track-title{display:block;font-weight:600;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.track-sub{display:block;color:var(--secondary);font-size:13px;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.check{width:20px;height:20px;border:1.5px solid var(--border);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0}.check svg{width:12px;height:12px}.selected .check{background:var(--primary);border-color:var(--accent)}.track:not(.selected) .check svg{display:none}.row-cast{border:1px solid var(--border);border-radius:6px;padding:10px 12px;min-height:44px;background:var(--selected);color:var(--accent);font-size:14px;font-weight:600}.player{flex-shrink:0;border-top:1px solid var(--border);background:var(--surface);padding:16px 20px calc(14px + env(safe-area-inset-bottom))}.now{display:flex;align-items:center;gap:12px;margin-bottom:14px}.art{height:38px;width:38px;flex-shrink:0;border:1px solid var(--separator);border-radius:6px;display:grid;place-items:center;background:var(--page);color:var(--secondary)}.art svg{width:20px;height:20px}.now-text{flex:1;min-width:0}.now-text strong{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.now-text span{display:block;font-size:13px;color:var(--secondary);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.playback-controls{display:flex;align-items:center;gap:10px}.cast-button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;background:var(--primary);color:#fff;height:48px;font-size:15px;font-weight:600}.transport{height:48px;width:48px;display:grid;place-items:center;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text)}.status{font-size:13px;color:var(--secondary);min-height:16px;margin:12px 0 0;overflow-wrap:anywhere}.status.error{color:var(--error)}dialog{color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0;width:calc(100% - 32px);max-width:440px;max-height:75dvh}dialog::backdrop{background:#0006}.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid var(--separator)}.sheet-head h2{font-size:20px;margin:0}.device-list{padding:4px 12px 14px;overflow-y:auto;max-height:50dvh}.device-option{width:100%;border:0;border-bottom:1px solid var(--separator);color:var(--text);background:var(--surface);padding:16px 8px;text-align:left;display:flex;align-items:center;gap:12px;font-size:16px;min-height:56px}.device-option[aria-pressed=true]{color:var(--accent);background:var(--selected)}.device-empty{color:var(--secondary);font-size:14px;padding:18px 8px}.sheet-actions{display:flex;align-items:center;gap:2px}.toast{position:fixed;bottom:205px;left:50%;transform:translateX(-50%);padding:11px 18px;background:#303033;color:#fff;border-radius:8px;font-size:13px;z-index:10;max-width:90%;text-align:center}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}[hidden]{display:none!important}@media(max-height:650px){header{height:62px;padding:12px 16px}.search-area{padding:12px 16px 0}.library{padding:0 16px}.player{padding:12px 16px calc(10px + env(safe-area-inset-bottom))}.now{margin-bottom:10px}.track,.select-track{min-height:72px}.select-track{padding:12px 10px}}@media(prefers-reduced-motion:reduce){.scan-line.busy:before{animation:none}}
+
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:4px;flex:1;min-width:0}.header-actions .device-pill{flex:0 1 auto;min-width:0}#theme-toggle,#settings-toggle{flex-shrink:0;color:var(--text)}
+
+.row-more{flex-shrink:0;color:var(--secondary);margin-left:2px;min-width:36px}.track{padding-right:8px}.select-track{gap:9px}.audio-controls{display:flex;align-items:center;gap:8px;margin-top:8px}.audio-controls .icon-button{flex-shrink:0;min-width:38px}.audio-controls input{flex:1;min-width:0;accent-color:var(--primary);height:36px;margin:0}.audio-controls output{min-width:38px;text-align:right;font-size:13px;color:var(--secondary);font-variant-numeric:tabular-nums}.details-body{padding:18px}.details-body label{display:block;font-size:13px;color:var(--secondary);margin-bottom:8px}.details-body textarea{display:block;width:100%;resize:vertical;background:var(--page);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:10px;font:13px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;white-space:pre-wrap}.status{margin-top:4px}
+
+.duration-option{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--secondary);margin-left:auto;margin-right:8px;min-height:44px;cursor:pointer}.duration-option input{accent-color:var(--primary);width:16px;height:16px;margin:0}.track-duration{display:block;margin-top:5px;color:var(--secondary);font-size:12px;font-variant-numeric:tabular-nums}
+
+.seek-controls{margin-bottom:10px}.seek-controls input{display:block;width:100%;height:26px;margin:0;accent-color:var(--primary)}.seek-times{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--secondary);font-variant-numeric:tabular-nums;margin-top:1px}.now{margin-bottom:8px}.player{padding-top:12px}
+
+.seek-row{display:flex;align-items:center;gap:10px}.seek-row input{flex:1;min-width:0}.skip-button{flex-shrink:0;min-width:44px;min-height:44px;padding:6px 2px;border:0;border-radius:6px;background:none;color:var(--accent);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}.skip-button:hover:not(:disabled){background:var(--soft)}
+
+.library-tabs{display:flex;align-items:center;gap:12px;min-width:0}.library-tabs button{background:none;border:0;padding:10px 0;color:var(--secondary);font-weight:600;font-size:14px;min-height:44px}.library-tabs button[aria-pressed="true"]{color:var(--accent)}.track-fields select{display:block;width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--page);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:20px}.list-empty{color:var(--secondary);font-size:14px;padding:16px 0}.now .row-cast{padding:8px;font-size:13px}.now #recover-link{min-width:36px}.library-tabs .count{margin:0}.duration-option{margin-right:0}
+
+.disconnect-row{padding:0 16px 18px}.disconnect-row button{width:100%;background:var(--page);border-color:var(--border);color:var(--text)}
+
+.status-row{display:flex;align-items:flex-end;gap:12px;justify-content:space-between}.status-row .status{flex:1;min-width:0}.version{font-size:12px;color:var(--secondary);white-space:nowrap;font-variant-numeric:tabular-nums}
+#details-dialog .sheet-head{padding:8px 12px 8px 18px}
+#details-dialog .sheet-head h2{font-size:17px}
+#details-dialog .icon-button{color:var(--secondary)}
+.details-name{margin:0;font-size:19px;line-height:1.3;overflow-wrap:anywhere}
+.details-facts{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:6px;color:var(--secondary);font-size:13px;font-variant-numeric:tabular-nums}
+.details-facts span:empty{display:none}
+.details-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:18px 0 10px}
+.details-buttons :is(button,a){display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;text-align:center}
+.details-buttons a{background:var(--surface);color:var(--text)}
+.details-direct{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-bottom:10px;background:var(--surface)}
+.details-direct svg{width:17px;height:17px}
+.details-buttons svg{width:17px;height:17px}
+#details-feedback{margin:0 0 10px;color:var(--secondary);font-size:13px}
+.details-section{border-top:1px solid var(--separator)}
+.details-section summary{cursor:pointer;min-height:44px;padding:13px 2px;color:var(--secondary);font-size:14px;font-weight:600}
+.details-section textarea{margin:0 0 12px;resize:none}
+.advanced-actions{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:4px}
+.advanced-actions button{background:var(--surface);color:var(--text)}
+.player-links{display:flex;flex-wrap:wrap;gap:4px 14px}
+.text-action{display:inline-flex;align-items:center;min-height:36px;padding:0;border:0;background:none;color:var(--accent);font-size:13px;text-decoration:none;text-align:left}
+.text-action:hover{text-decoration:underline}
+:where(.details-buttons a,.details-section summary,.details-section textarea,.text-action):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#cast-mode-title{margin:0 0 8px;font-size:15px}
+.details-body .settings-device{display:flex;margin:0;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;border-top:1px solid var(--separator);padding:12px 0}
+.settings-device span{flex:1 1 110px;min-width:0;overflow-wrap:anywhere;font-size:14px;font-weight:600}
+.settings-device select{flex:0 1 auto;max-width:100%;min-height:44px;padding:6px 8px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;font:inherit}
+.settings-status{color:var(--secondary);font-size:13px;margin:8px 0 0}
+</style><script src="/app.js" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"><defs>
+<symbol id="i-more" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"/></symbol>
+<symbol id="i-volume" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z"/></symbol>
+<symbol id="i-muted" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76ZM32,96H72v64H32ZM144,207.64,88,164.09V95.89l56,61.6Zm42-63.77a24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.57,40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.59Zm-80.16-76a8,8,0,0,1,1.4-11.23l39.85-31A8,8,0,0,1,160,32v74.83a8,8,0,0,1-16,0V48.36l-26.94,21A8,8,0,0,1,105.84,67.91ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+<symbol id="i-cast" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M232,56V200a16,16,0,0,1-16,16H144a8,8,0,0,1,0-16h72V56H40V96a8,8,0,0,1-16,0V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM32,184a8,8,0,0,0,0,16,8,8,0,0,1,8,8,8,8,0,0,0,16,0A24,24,0,0,0,32,184Zm0-32a8,8,0,0,0,0,16,40,40,0,0,1,40,40,8,8,0,0,0,16,0A56.06,56.06,0,0,0,32,152Zm0-32a8,8,0,0,0,0,16,72.08,72.08,0,0,1,72,72,8,8,0,0,0,16,0A88.1,88.1,0,0,0,32,120Z"/></symbol>
+<symbol id="i-link" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"/></symbol>
+<symbol id="i-search" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></symbol>
+<symbol id="i-play" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></symbol>
+<symbol id="i-stop" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M200,40H56A16,16,0,0,0,40,56V200a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,160H56V56H200V200Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 256 256" fill="currentColor" stroke="none"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"/></symbol>
+<symbol id="i-close" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="200" y1="56" x2="56" y2="200" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="200" y1="200" x2="56" y2="56" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><polyline points="168 96 216 96 216 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M216,96,187.72,67.72A88,88,0,0,0,64,67" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><polyline points="88 160 40 160 40 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M40,160l28.28,28.28A88,88,0,0,0,192,189" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></symbol>
+</defs></svg>
+<main class="app">
+<header><div class="brand"><svg aria-hidden="true"><use href="#i-cast"/></svg>Cast</div><div class="header-actions"><button class="device-pill" id="device-picker" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-cast"/></svg><span id="device-name">Choose a TV</span></button><button type="button" class="icon-button" id="settings-toggle" aria-label="Settings" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4l.6 2.6a8 8 0 0 1 1.7 1L19 5l2 3.5-1.9 1.8a8 8 0 0 1 0 2l1.9 1.8-2 3.5-2.7-.7a8 8 0 0 1-1.7 1L14 21h-4l-.6-3.1a8 8 0 0 1-1.7-1l-2.7.7-2-3.5 1.9-1.8a8 8 0 0 1 0-2L3 8.5 5 5l2.7.6a8 8 0 0 1 1.7-1L10 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="11.5" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><button class="icon-button" id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false"><svg aria-hidden="true"><use id="theme-icon" href="#i-moon"/></svg></button></div></header>
+<section class="search-area" aria-label="Find videos"><form id="scan-form" class="search"><svg aria-hidden="true"><use href="#i-link"/></svg><label class="sr-only" for="page-url">Video page URL</label><input id="page-url" type="url" inputmode="url" placeholder="Paste a video page or .m3u8 link" required autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"><button id="scan" type="submit" aria-label="Find videos"><svg aria-hidden="true"><use id="scan-icon" href="#i-search"/></svg></button></form><div class="scan-line" id="scan-line"><span id="scan-status" role="status" aria-live="polite">Ready</span></div></section>
+<section class="library" aria-label="Videos"><div class="section-heading"><div class="library-tabs" role="group" aria-label="Video library">
+  <button type="button" id="videos-tab" aria-pressed="true">Videos</button>
+  <button type="button" id="remuxes-tab" aria-pressed="false">Remuxes</button>
+  <span class="count" id="video-count">1</span>
+</div><label class="duration-option"><input type="checkbox" id="show-duration" checked><span>Duration</span></label><button class="icon-button" id="copy-link" aria-label="Copy selected video link"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></div><div class="tracks" id="tracks"></div></section>
+<footer class="player"><div class="now"><div class="art"><svg aria-hidden="true"><use href="#i-play"/></svg></div><div class="now-text"><strong id="now-title">Big Buck Bunny</strong><span id="now-subtitle">Test video</span></div><button id="track-picker" class="row-cast" disabled>Tracks</button></div><div class="seek-controls"><label class="sr-only" for="seek">Playback position</label><div class="seek-row"><button type="button" class="skip-button" id="skip-back" aria-label="Back 10 seconds" disabled>−10s</button><input type="range" id="seek" min="0" max="1" step="1" value="0" disabled><button type="button" class="skip-button" id="skip-forward" aria-label="Forward 10 seconds" disabled>+10s</button></div><div class="seek-times"><span id="seek-current">0:00</span><span id="seek-end">—</span></div></div><div class="playback-controls"><button class="cast-button" id="cast" disabled><svg aria-hidden="true"><use href="#i-cast"/></svg><span id="cast-label">Cast video</span></button><button class="transport" id="toggle-play" aria-label="Play" disabled><svg aria-hidden="true"><use id="play-icon" href="#i-play"/></svg></button><button class="transport" id="stop" aria-label="Stop" disabled><svg aria-hidden="true"><use href="#i-stop"/></svg></button></div><div class="audio-controls"><button class="icon-button" id="mute" aria-label="Mute" aria-pressed="false" disabled><svg aria-hidden="true"><use id="mute-icon" href="#i-volume"/></svg></button><label class="sr-only" for="volume">TV volume</label><input type="range" id="volume" min="0" max="100" step="1" value="0" disabled><output id="volume-value" for="volume">—</output></div><div class="status-row"><p class="status" id="status" role="status" aria-live="polite">Connecting…</p><span class="version" id="version" aria-label="App version">v0.2.31</span></div><div class="player-links">
+  <a class="text-action" id="open-remux" target="_blank" rel="noopener" hidden>Open MP4</a>
+  <button type="button" class="text-action" id="cast-diagnostics" hidden>Copy diagnostics</button>
+</div></footer>
+</main>
+<dialog id="settings-dialog" aria-labelledby="settings-title">
+  <div class="sheet-head">
+    <h2 id="settings-title">Settings</h2>
+    <button type="button" class="icon-button" id="close-settings" aria-label="Close settings">
+      <svg aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <section class="details-body" aria-labelledby="cast-mode-title">
+    <h3 id="cast-mode-title">HLS playback</h3>
+    <div class="settings-devices" id="settings-devices"></div>
+    <p class="settings-status" id="settings-status" role="status" hidden></p>
+  </section>
+</dialog>
+<dialog id="device-dialog" aria-labelledby="device-title"><div class="sheet-head"><h2 id="device-title">Cast to</h2><div class="sheet-actions"><button class="icon-button" id="refresh" aria-label="Refresh devices"><svg aria-hidden="true"><use href="#i-refresh"/></svg></button><button class="icon-button" id="close-devices" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div></div><div class="device-list" id="device-list"></div><div class="disconnect-row"><button class="row-cast" id="disconnect" type="button" disabled>Disconnect from TV</button></div></dialog>
+<dialog id="tracks-dialog" aria-labelledby="tracks-title"><div class="sheet-head"><h2 id="tracks-title">Audio &amp; subtitles</h2><button class="icon-button" id="close-tracks" aria-label="Close audio and subtitles"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div><div class="details-body track-fields"><label for="audio-track">Audio</label><select id="audio-track" disabled><option>No alternate audio</option></select><label for="subtitle-track">Subtitles</label><select id="subtitle-track" disabled><option>No subtitles</option></select></div></dialog>
+<dialog id="details-dialog" aria-labelledby="details-title">
+  <div class="sheet-head">
+    <h2 id="details-title">Video details</h2>
+    <button type="button" class="icon-button" id="close-details" aria-label="Close video details">
+      <svg aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <div class="details-body">
+    <h3 class="details-name" id="details-name"></h3>
+    <div class="details-facts">
+      <span id="details-meta"></span>
+      <span id="details-duration" hidden></span>
+    </div>
+    <div class="details-buttons">
+      <button id="details-copy" type="button" class="row-cast">
+        <svg aria-hidden="true"><use href="#i-copy"/></svg>
+        Copy link
+      </button>
+      <a id="details-open" class="row-cast" target="_blank" rel="noopener noreferrer">Open source</a>
+    </div>
+    <p id="details-feedback" role="status" hidden></p>
+    <button type="button" class="row-cast details-direct" id="direct-hls" hidden>
+      <svg aria-hidden="true"><use href="#i-cast"/></svg>Cast HLS directly
+    </button>
+    <details class="details-section" id="details-link-section">
+      <summary>Full URL</summary>
+      <textarea id="details-url" aria-label="Full URL" readonly rows="3" spellcheck="false"></textarea>
+    </details>
+    <details class="details-section" id="details-advanced" hidden>
+      <summary>Advanced casting</summary>
+      <div class="advanced-actions">
+        <button type="button" class="row-cast" id="swift-autoplay">Test Swift autoplay</button>
+      </div>
+    </details>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+</body></html>
