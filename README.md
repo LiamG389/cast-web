@@ -49,6 +49,9 @@ Under **Settings → HLS playback**, choose **MP4 remux** or **Direct HLS** for 
 
 Completed MP4s appear in **Remuxes** and expire after three days of inactivity. **Open MP4** plays the helper's copy in a browser during a cast. The helper stores resume positions in `resume.csv` and receiver settings in `device-settings.json`, both in the media directory.
 
+>[!IMPORTANT]
+> **IT IS SUGGESTED YOU USE DIRECT HLS!!!**: Remuxing requires additional (though not a lot) resources and storage on the server side. Only use remuxing if your Chromecast *does not* support the video HLS format. Aka. Only use it if you try direct HLS and it doesn't work. 
+
 ## Troubleshooting
 
 - Start with Big Buck Bunny. If a cast fails, use **Copy diagnostics** and check the helper logs for the receiver address and the stage that timed out.
